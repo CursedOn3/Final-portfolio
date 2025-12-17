@@ -59,14 +59,19 @@ export const Navigation = () => {
             <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-foreground-muted hover:text-foreground transition-colors"
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu size={24} />
-          </button>
+          {/* Mobile controls: theme toggle left, menu button right */}
+          <div className="md:hidden flex items-center gap-3">
+            <div className="flex items-center">
+              <ThemeToggle />
+            </div>
+            <button
+              className="text-foreground-muted hover:text-foreground transition-colors"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </nav>
       </motion.header>
 

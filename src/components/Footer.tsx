@@ -21,6 +21,8 @@ export const Footer = () => {
               <motion.a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className="text-foreground-subtle hover:text-primary transition-colors duration-300"
                 whileHover={{ scale: 1.1, y: -2 }}

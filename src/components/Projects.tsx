@@ -95,6 +95,8 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
           >
             <a 
               href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 rounded-full bg-primary text-primary-foreground hover:scale-110 transition-transform duration-200"
               aria-label="View live project"
             >
@@ -102,6 +104,8 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
             </a>
             <a 
               href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border border-border hover:border-primary/40 hover:scale-110 transition-all duration-200"
               aria-label="View source code"
             >
