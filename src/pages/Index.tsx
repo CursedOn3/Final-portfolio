@@ -8,12 +8,14 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/hooks/useTheme";
 
+
 const Index = () => {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-background transition-colors duration-300">
         <Navigation />
         <main>
+          
           <Hero />
           <About />
           <Skills />
