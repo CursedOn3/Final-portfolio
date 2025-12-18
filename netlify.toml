@@ -7,5 +7,5 @@
   # Optional: pin Node version if needed by your toolchain
   NODE_VERSION = "18"
 
-[[plugins]]
-  package = "@netlify/plugin-functions-core"
+# No plugins required for this static build. If you need Netlify plugins,
+# install them and list them in `package.json` per Netlify's guidance.
