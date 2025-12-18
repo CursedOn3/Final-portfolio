@@ -13,6 +13,13 @@ import {
   Workflow
 } from "lucide-react";
 import { useState } from "react";
+import SkillCanvas from "./SkillCanvas";
+import { FRONTEND_IMAGES } from "@/data/frontend-image";
+import { BACKEND_IMAGES } from "@/data/backend-image";
+import { FULLSTACK_IMAGES } from "@/data/fullstack-image";
+import { DATABASE_IMAGES } from "@/data/database-images";
+import { TOOLS_IMAGES } from "@/data/tools-image";
+import { PROGRAMMING_LANGUAGES_IMAGES } from "@/data/programminglanguage-image";
 
 const skillCategories = [
   {
@@ -89,19 +96,40 @@ const SkillCard = ({ title, icon: Icon, skills, size, index }: SkillCardProps) =
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       >
-        <div className="h-full flex flex-col">
-          <motion.div 
-            className="icon-glow w-fit mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
+        <div className="h-full flex flex-col relative overflow-hidden">
+          {/* Decorative per-card canvas using related images (behind content but above card background) */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <SkillCanvas
+              sources={
+                title === "Frontend"
+                  ? FRONTEND_IMAGES
+                  : title === "Backend"
+                  ? BACKEND_IMAGES
+                  : title === "Full-Stack"
+                  ? FULLSTACK_IMAGES
+                  : title === "Database"
+                  ? DATABASE_IMAGES
+                  : title === "Tools"
+                  ? TOOLS_IMAGES
+                  : title === "Programming Languages"
+                  ? PROGRAMMING_LANGUAGES_IMAGES
+                  : []
+              }
+            />
+          </div>
+          <div className="relative z-10 flex-1 flex flex-col">
+            <motion.div 
+              className="icon-glow w-fit mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
             <Icon size={size === "small" ? 20 : 24} className="text-primary" />
-          </motion.div>
-          
-          <h3 className="text-lg md:text-xl font-medium text-foreground mb-4">
-            {title}
-          </h3>
-          
-          <div className="flex flex-wrap gap-2 mt-auto">
+            </motion.div>
+
+            <h3 className="text-lg md:text-xl font-medium text-foreground mb-4">
+              {title}
+            </h3>
+
+            <div className="flex flex-wrap gap-2 mt-auto">
             {skills.map((skill) => (
               <span 
                 key={skill}
@@ -110,6 +138,7 @@ const SkillCard = ({ title, icon: Icon, skills, size, index }: SkillCardProps) =
                 {skill}
               </span>
             ))}
+            </div>
           </div>
         </div>
       </motion.div>
