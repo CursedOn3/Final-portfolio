@@ -2,6 +2,8 @@ import { AnimatedSection } from "./AnimatedSection";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import { PROJECT_IMAGES, PROJECT_IMAGE_MAP } from "@/data/projects-images";
+import { CANVAS_IMAGES } from "@/data/canvas-image";
 
 const projects = [
   {
@@ -71,22 +73,18 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
       >
         {/* Project preview area */}
         <div className={`relative overflow-hidden ${featured ? "h-64 md:h-80" : "h-48 md:h-56"}`}>
-          <div className="absolute inset-0 bg-gradient-to-br from-background-elevated to-card flex items-center justify-center">
-            {/* Decorative preview placeholder */}
-            <div className="relative">
-              <motion.div
-                className="w-32 h-32 md:w-40 md:h-40 rounded-2xl border border-border-subtle bg-background/50 backdrop-blur-sm"
-                animate={{ 
-                  rotate: [0, 2, 0, -2, 0],
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div className="absolute inset-4 rounded-xl border border-primary/10" />
-                <div className="absolute top-6 left-6 w-8 h-1 bg-primary/30 rounded-full" />
-                <div className="absolute top-10 left-6 w-16 h-1 bg-foreground-subtle/20 rounded-full" />
-                <div className="absolute top-14 left-6 w-12 h-1 bg-foreground-subtle/20 rounded-full" />
-              </motion.div>
-            </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-background-elevated to-card flex items-center justify-center overflow-hidden rounded-t-2xl">
+            {/* Use image if title matches; otherwise leave a subtle placeholder */}
+            {PROJECT_IMAGE_MAP[project.title] ? (
+              <img
+                src={PROJECT_IMAGE_MAP[project.title]}
+                alt={project.title + " preview"}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-background-elevated to-card" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
           </div>
           
           {/* Hover overlay */}
