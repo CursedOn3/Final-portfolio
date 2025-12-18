@@ -1,0 +1,11 @@
+[build]
+  # Ensure devDependencies (like Vite) are installed during Netlify builds
+  command = "npm ci --include=dev && npm run build"
+  publish = "dist"
+
+[context.production.environment]
+  # Optional: pin Node version if needed by your toolchain
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-core"
